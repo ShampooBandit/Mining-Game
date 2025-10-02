@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxbntx541pscw"]
+
+[ext_resource type="Script" uid="uid://bql5w18jq8sm5" path="res://Scripts/IronOre.gd" id="1_fhi7l"]
+[ext_resource type="Texture2D" uid="uid://ck8x4bb7g24cw" path="res://Assets/items/item323.png" id="2_nigqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij8h3"]
+radius = 6.0
+
+[node name="Iron Ore" type="RigidBody2D"]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_fhi7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nigqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ij8h3")

@@ -1,0 +1,165 @@
+[gd_scene load_steps=28 format=3 uid="uid://dggwtau43bilr"]
+
+[ext_resource type="Texture2D" uid="uid://bauxr4c7qspoa" path="res://Assets/Player Sprites/CharacterAttack3.png" id="1_fd4e3"]
+[ext_resource type="Script" uid="uid://sas3p1sj40ax" path="res://Scripts/Player.gd" id="1_qqcod"]
+[ext_resource type="Texture2D" uid="uid://c7q3gimx7ooef" path="res://Assets/Player Sprites/CharacterAttack2.png" id="2_qqcod"]
+[ext_resource type="Texture2D" uid="uid://nr50blk1refx" path="res://Assets/Player Sprites/CharacterAttack1.png" id="3_igrcy"]
+[ext_resource type="Texture2D" uid="uid://lfxr75qrxnjq" path="res://Assets/Player Sprites/CharacterAttack0.png" id="4_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://cjcutfttldvmk" path="res://Assets/Player Sprites/CharacterDash.png" id="5_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://dmna2k7ve5htr" path="res://Assets/Player Sprites/CharacterDead.png" id="6_olqyp"]
+[ext_resource type="Texture2D" uid="uid://cl2gv0seugikx" path="res://Assets/Player Sprites/CharacterFall.png" id="7_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://dbml23hu2te6i" path="res://Assets/Player Sprites/CharacterIdle0.png" id="8_bi64h"]
+[ext_resource type="Texture2D" uid="uid://bkr6ph3pimkho" path="res://Assets/Player Sprites/CharacterIdle1.png" id="9_2ijsl"]
+[ext_resource type="Texture2D" uid="uid://cyrg7kguj4si3" path="res://Assets/Player Sprites/CharacterIdle2.png" id="10_p1odr"]
+[ext_resource type="Texture2D" uid="uid://dyhrpfrxnmbuw" path="res://Assets/Player Sprites/CharacterIdle3.png" id="11_0gysh"]
+[ext_resource type="Texture2D" uid="uid://cmneu5tf041r7" path="res://Assets/Player Sprites/CharacterJump.png" id="12_vfarp"]
+[ext_resource type="Texture2D" uid="uid://d3hlabbxgoj2h" path="res://Assets/Player Sprites/CharacterWalk2.png" id="13_y6uwr"]
+[ext_resource type="Texture2D" uid="uid://b80uu82l6e316" path="res://Assets/Player Sprites/CharacterWalk1.png" id="14_83xs0"]
+[ext_resource type="Texture2D" uid="uid://6bhh6ig5bhnq" path="res://Assets/Player Sprites/CharacterWalk0.png" id="15_ypfnu"]
+[ext_resource type="Texture2D" uid="uid://b2y4pqumbbwku" path="res://Assets/Player Sprites/CharacterWallSlide.png" id="16_xuaoq"]
+[ext_resource type="Script" uid="uid://rtq0xbjwfdbc" path="res://Scripts/StateMachine.gd" id="18_wpjfl"]
+[ext_resource type="Script" uid="uid://bbdk87ui8t4cm" path="res://Scripts/player states/Idle.gd" id="19_bi64h"]
+[ext_resource type="Script" uid="uid://bmdhgfp2diox7" path="res://Scripts/player states/Running.gd" id="20_2ijsl"]
+[ext_resource type="Script" uid="uid://bgs54blbyy4iw" path="res://Scripts/player states/Jumping.gd" id="21_p1odr"]
+[ext_resource type="Script" uid="uid://7j1w8uhu3nsr" path="res://Scripts/player states/Falling.gd" id="22_0gysh"]
+[ext_resource type="Script" uid="uid://coknd0bo1rodo" path="res://Scripts/player states/Punching.gd" id="23_bi64h"]
+[ext_resource type="Script" uid="uid://bk2ffg1cpu4r7" path="res://Scripts/Inventory.gd" id="24_2ijsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
+size = Vector2(10, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wohnl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_l6n3p")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_olqyp")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wpjfl")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bi64h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2ijsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_p1odr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0gysh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_vfarp")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fd4e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qqcod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_igrcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fs7ks")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_y6uwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_83xs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ypfnu")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_xuaoq")
+}],
+"loop": true,
+"name": &"wall_slide",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ijsl"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qqcod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wohnl")
+animation = &"punch"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("18_wpjfl")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("19_bi64h")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("20_2ijsl")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("21_p1odr")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("22_0gysh")
+
+[node name="Punching" type="Node" parent="StateMachine"]
+script = ExtResource("23_bi64h")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("24_2ijsl")
+
+[node name="PickupRange" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
+shape = SubResource("CircleShape2D_2ijsl")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine" method="_on_animation_finished"]
+[connection signal="body_entered" from="PickupRange" to="Inventory" method="_on_pickup_range_body_entered"]
